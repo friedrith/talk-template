@@ -63,7 +63,8 @@ jobs:
       - id: rewriteTagName
         run: |
           INPUT=$(echo ${{ github.event.inputs.tagName }} | sed 's/[\s]/\-/g')
-          echo "lowerCaseValue=${INPUT,,}" >>${GITHUB_OUTPUT} 
+          echo "VAR_LOWERCASE=${INPUT,,}" >>${GITHUB_OUTPUT} 
+      - run: echo ${{steps.rewriteTagName.outputs.VAR_LOWERCASE}}
       - name: Create tag
         uses: actions/github-script@v5
         with:
@@ -71,7 +72,7 @@ jobs:
             github.rest.git.createRef({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              ref: 'refs/tags/${{ steps.rewriteTagName.outputs.lowerCaseValue }}',
+              ref: 'refs/tags/${{ steps.rewriteTagName.outputs.VAR_LOWERCASE }}',
               sha: context.sha
             })
       - name: Create Release
@@ -79,7 +80,7 @@ jobs:
         with:
           artifacts: "release.tar.gz,foo/*.txt"
           body: This version was presented at the ${{ github.event.inputs.eventName }}
-          tag: ${{ steps.rewriteTagName.outputs.lowerCaseValue }}
+          tag: ${{ steps.rewriteTagName.outputs.VAR_LOWERCASE }}
           name: ${{ github.event.inputs.eventName }}
       # - name: Create Release
       #   id: create_release
