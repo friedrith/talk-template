@@ -11,11 +11,15 @@
   <img src=".assets/screenshot.svg" alt="Screenshot" height="300" />
 </div>
 
-## Getting started
+## Introduction (to remove when you use this template)
 
 This is a template for a talk. It uses [slidev](https://sli.dev/).
 
 > You can check [https://github.com/friedrith/react-composition](https://github.com/friedrith/react-composition) as an example.
+
+Read the file [GETTING_STARTED.md](./GETTING_STARTED.md) to know how to use this template.
+
+## Getting started
 
 ```bash
 pnpm install
