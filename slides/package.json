@@ -2,7 +2,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "slidev build",
+    "build": "slidev build --base /__REPOSITORY_NAME__/slides --out ../dist/slides",
     "dev": "slidev --open",
     "export": "slidev export"
   },

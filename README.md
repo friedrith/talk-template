@@ -17,7 +17,12 @@ This is a template for a talk. It uses [slidev](https://sli.dev/).
 
 > You can check [https://github.com/friedrith/react-composition](https://github.com/friedrith/react-composition) as an example.
 
-
+```bash
+pnpm install
+pnpm slides
+# in another terminal
+pnpm demo
+```
 
 ## Versions
 

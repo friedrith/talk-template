@@ -39,8 +39,10 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       - name: Install 🔧
         run: pnpm install
+        working-directory: demo
       - name: Build 🔧
         run: pnpm build
+        working-directory: demo
       - name: Install Slides
         run: pnpm install
         working-directory: slides
