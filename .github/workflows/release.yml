@@ -63,7 +63,7 @@ jobs:
       - id: rewriteTagName
         run: |
           INPUT=$(echo ${{ github.event.inputs.tagName }} | sed 's/[\s]/\-/g')
-          echo "::set-output name=lowerCaseValue::${INPUT,,}"  
+          echo "lowerCaseValue=${INPUT,,}" >>${GITHUB_OUTPUT} 
       - name: Create tag
         uses: actions/github-script@v5
         with:
