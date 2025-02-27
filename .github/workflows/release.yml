@@ -16,7 +16,7 @@ concurrency:
   group: 'pages'
   cancel-in-progress: false
 jobs:
-  release:
+  build:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -48,3 +48,24 @@ jobs:
       - name: Build 🔧
         run: pnpm build
         working-directory: demo
+      - name: Install Slides
+        run: pnpm install
+        working-directory: slides
+      - name: Build slides 🔧
+        run: pnpm build
+        working-directory: slides
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'dist/'
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ncipollo/release-action@v1
+        with:
+          artifacts: "release.tar.gz,foo/*.txt"
+          bodyFile: "body.md"
+          # tag: ${{ github.event.inputs.eventName }}
+          name: ${{ github.event.inputs.eventName }}
