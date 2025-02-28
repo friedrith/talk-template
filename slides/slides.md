@@ -85,6 +85,14 @@ Here is another comment.
 -->
 
 ---
+layout: cool-demo
+url: https://friedrith.github.io/react-composition/#/clear-button?demo=1
+---
+
+# Cool demos
+
+
+---
 transition: slide-up
 level: 2
 ---
